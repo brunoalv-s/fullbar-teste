@@ -1,0 +1,16 @@
+{
+	"carousel": [
+		{
+			"id": "1",
+			"img": "assets/images/1.jpg",
+		},
+		{
+			"id": "2",
+			"img": "assets/images/2.jpg"
+		},
+		{
+			"id": "3",
+			"img": "assets/images/3.jpg"
+		},
+	]
+}

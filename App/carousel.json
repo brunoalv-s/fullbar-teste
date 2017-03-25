@@ -1,0 +1,16 @@
+{
+	"carousel": [
+		{
+			"id": "1",
+			"img": "/caminho/da/imagem/a/definir/1.jpg",
+		},
+		{
+			"id": "2",
+			"img": "/caminho/da/imagem/a/definir/2.jpg"
+		},
+		{
+			"id": "3",
+			"img": "/caminho/da/imagem/a/definir/3.jpg"
+		},
+	]
+}

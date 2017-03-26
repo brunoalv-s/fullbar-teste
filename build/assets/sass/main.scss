@@ -1,3 +1,22 @@
-@import "core/reset";
+// main.scss
+@charset "UTF-8";
+
+// Core
+@import "core/vars";
+@import "core/normalize";
 @import "core/colors";
+
+// Tools
 @import "tools/breakpoint";
+@import "tools/grid";
+
+// Components
+@import "components/header";
+@import "components/content";
+@import "components/buttons";
+@import "components/footer";
+
+body {
+  background: $color-gray-light;
+  background: linear-gradient($color-gray-dark, $color-gray-light);
+}

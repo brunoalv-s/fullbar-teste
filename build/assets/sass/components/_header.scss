@@ -1,0 +1,82 @@
+header {
+  width: 100%;
+  height: 85px;
+  background-color: $color-white;
+  border-top: 0 solid $color-primary;
+  overflow: hidden;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+  }
+
+  .logo {
+    width: 185px;
+    svg {
+      path.colorA {
+        fill: $color-primary;
+      }
+
+      path.colorB {
+        fill: $color-black;
+      }
+    }
+  }
+
+  .nav-site {
+    align-self: center;
+
+    ul {
+      display: flex;
+
+      li {
+        list-style: none;
+        border-right: 2px solid $color-primary;
+
+        &:nth-last-child(1) {
+          border-right: 0;
+        }
+
+        a {
+          color: $color-black;
+          font-size: 16px;
+          margin: auto 15px;
+          text-decoration: none;
+          text-transform: uppercase;
+
+          &.active {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  .login {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    background-color: $color-primary;
+    margin-top: -18px;
+    padding: 15px !important;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 1px 0px 4px lighten($color-gray-light, 30%);
+
+    form {
+      display: flex;
+
+        input[type="name"],
+        input[type="password"] {
+          width: 40%;
+          height: 30px;
+          border-radius: 5px;
+          border: 0;
+          font-style: italic;
+          margin-right: 15px;
+          padding: 7.5px 15px;
+        }
+    }
+  }
+
+}

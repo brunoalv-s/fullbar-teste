@@ -4,15 +4,15 @@ jQuery(document).ready(function ($) {
   var slideHeight = $('#slider ul li').height();
   var sliderUlWidth = slideCount * slideWidth;
 
-  $('#slider').css({ width:slideWidth, height: slideHeight });
-  // $('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+  $('#slider').css({ width:'100%', height: slideHeight });
+  $('#slider ul').css({ width: sliderUlWidth });
   //
   $('#slider ul li:last-child').prependTo('#slider ul');
 
   function moveLeft() {
     $('#slider ul').animate({
       left: + slideWidth
-    }, 200, function () {
+    }, 0, function () {
       $('#slider ul li:last-child').prependTo('#slider ul');
       $('#slider ul').css('left', '');
     });
@@ -21,8 +21,8 @@ jQuery(document).ready(function ($) {
   function moveRight() {
     $('#slider ul').animate({
       left: - slideWidth
-    }, 200, function () {
-      $('#slider ul li:last-child').prependTo('#slider ul');
+    }, 0, function () {
+      $('#slider ul li:first-child').appendTo('#slider ul');
       $('#slider ul').css('left', '');
     });
   };

@@ -36,6 +36,17 @@
       width: 100%;
       margin: 15px 0;
     }
+
+    .col {
+
+      @include breakpoint(tiny) {
+        margin: 1em 0;
+      }
+
+      @include breakpoint(normal) {
+        margin: 1em 0;
+      }
+    }
   }
 
 }

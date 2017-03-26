@@ -1,4 +1,18 @@
-jQuery(document).ready(function ($) {
+jQuery(document).ready(function() {
+  jQuery.getJSON("carousel.json", function(data) {
+    var items = [];
+    jQuery.each( data.slider, function( key, val ) {
+      console.log(val);
+
+      items.push( "<li id='" + key + "'><img src='" + val.src + "' /></li>" );
+    });
+
+    jQuery( "<ul/>", {
+      "class": "my-new-list",
+      html: items.join( "" )
+    }).appendTo( "ul#slide" );
+  });
+
   var slideCount = $('#slider ul li').lenght;
   var slideWidth = $('#slider ul li').width();
   var slideHeight = $('#slider ul li').height();
@@ -29,10 +43,14 @@ jQuery(document).ready(function ($) {
 
   $('a.control_prev').click(function () {
     moveLeft();
+
+    return false;
   });
 
   $('a.control_next').click(function () {
     moveRight();
+
+    return false;
   });
 
 });

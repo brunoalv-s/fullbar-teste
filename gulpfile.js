@@ -8,28 +8,22 @@ var gulp = require('gulp'),
     pug = require('gulp-pug'),
     prefix = require('gulp-autoprefixer'),
     sourcemaps = require('gulp-sourcemaps'),
+    rename = require('gulp-rename'),
     uglify = require('gulp-uglify');
 
 gulp.task('browserSync', function() {
   browserSync.init({
     server: {
-      baseDir: 'app/'
+      baseDir: 'build/'
     }
   });
 
   gulp.watch('build/assets/sass/**/*.scss', ['sass']);
-  gulp.watch('build/*.pug', ['pug']);
-  gulp.watch('build/assets/js/**/*.js', ['scripts'])
-  gulp.watch('app/**/*.{html,css,js}').on('change', function() {
+  // gulp.watch('build/assets/js/**/*.js', ['scripts'])
+  gulp.watch('build/**/*.{html,css,js}').on('change', function() {
     browserSync.reload();
   });
 
-});
-
-gulp.task('pug', function() {
-  return gulp.src('build/**/*.pug')
-    .pipe(pug())
-    .pipe(gulp.dest('app'));
 });
 
 gulp.task('sass', function(){
@@ -41,13 +35,14 @@ gulp.task('sass', function(){
         cascade: false
       }))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('app/assets/css'))
+    .pipe(gulp.dest('build/assets/css'))
 });
 
 gulp.task('scripts', function() {
   return gulp.src('build/assets/js/**/*.js')
     .pipe(uglify())
-    .pipe(gulp.dest('app/assets/js'))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest('build/assets/js'))
 });
 
 gulp.task('images', function() {
@@ -55,7 +50,7 @@ gulp.task('images', function() {
     .pipe(cache(imagemin({
       interlaced: true
     })))
-    .pipe(gulp.dest('app/assets/images'))
+    .pipe(gulp.dest('build/assets/images'))
 });
 
 // Apenas move o arquivo Json
@@ -64,4 +59,4 @@ gulp.task('move', function() {
   .pipe(gulp.dest('app/assets/js'))
 });
 
-gulp.task('default', ['pug', 'sass', 'scripts', 'images', 'move', 'browserSync']);
+gulp.task('default', ['sass', 'scripts', 'images', 'browserSync']);

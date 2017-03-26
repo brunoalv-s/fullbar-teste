@@ -1,16 +1,16 @@
 {
-	"carousel": [
+	"slider": [
 		{
 			"id": "1",
-			"img": "assets/images/1.jpg",
+			"src": "https://images.pexels.com/photos/206728/pexels-photo-206728.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
 		},
 		{
 			"id": "2",
-			"img": "assets/images/2.jpg"
+			"src": "https://dummyimage.com/1200x350/ccc/fff.png&text=2"
 		},
 		{
 			"id": "3",
-			"img": "assets/images/3.jpg"
+			"src": "https://dummyimage.com/1200x350/ccc/fff.png&text=3"
 		},
 	]
 }

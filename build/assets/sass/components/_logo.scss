@@ -1,0 +1,12 @@
+.logo {
+  width: 185px;
+
+  svg {
+    path.colorA {
+      fill: $color-primary;
+    }
+    path.colorB {
+      fill: $color-black;
+    }
+  }
+}

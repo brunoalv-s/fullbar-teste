@@ -11,6 +11,12 @@
   @else if $point == tiny {
     @media (max-width: 768px) { @content ; }
   }
+  @else if $point == max-small {
+    @media (max-width: 959px) { @content ; }
+  }
+  @else if $point == min-normal {
+    @media (min-width: 960px) { @content ; }
+  }
 }
 
 /* Examplo de uso

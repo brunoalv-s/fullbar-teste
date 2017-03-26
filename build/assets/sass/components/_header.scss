@@ -5,23 +5,126 @@ header {
   border-top: 5px solid $color-primary;
   overflow: hidden;
 
+  @include breakpoint(max-small) {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+  }
+
   .container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 15px 0;
   }
-  @import "logo";
-  @import "menu-site";
+
+  .logo {
+    width: 185px;
+
+    svg {
+      path.colorA {
+        fill: $color-primary;
+      }
+      path.colorB {
+        fill: $color-black;
+      }
+    }
+  }
+
+  .nav-site {
+    .menu {
+      display: flex;
+
+      li {
+        list-style: none;
+
+        a {
+          color: $color-black;
+          font-family: 'Roboto';
+          text-decoration: none;
+          text-transform: uppercase;
+        }
+      }
+
+      @include breakpoint(max-small) {
+        width: 100%;
+        display: none;
+        background: $color-white;
+        border-top: 1px solid lighten($color-gray-light, 50%);
+        position: fixed;
+        padding-bottom: 2em;
+        z-index: 999;
+        top: 85px;
+        left: 0;
+        text-align: center;
+
+        li {
+          margin-top: 30px;
+
+          a {
+            font-size: 32px !important;
+            border-bottom: 2px solid $color-primary;
+          }
+        }
+      }
+
+      @include breakpoint(min-normal) {
+
+        li {
+          border-right: 2px solid $color-primary;
+          padding: 0 15px;
+
+          &:nth-last-child(1) {
+            border: 0;
+          }
+
+          a {
+            font-size: 16px;
+          }
+
+          .active {
+            font-weight: bold;
+          }
+        }
+
+      }
+    }
+
+    .responsive-menu {
+      color: $color-primary;
+      width: 100%;
+      padding: 20px 15px;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 600;
+
+
+      @include breakpoint(min-normal) {
+        display: none;
+      }
+    }
+  }
+
 
   .login {
     display: flex;
     align-items: center;
     width: 40%;
     background-color: $color-primary;
-    margin-top: -18px;
+    margin-top: -24px;
     padding: 15px !important;
     border-radius: 0 0 5px 5px;
     box-shadow: 1px 0px 4px lighten($color-gray-light, 30%);
+
+    @include breakpoint(max-small) {
+      display: none;
+      width: 100%;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 1000;
+      border-radius: 0;
+    }
 
     form {
       display: flex;

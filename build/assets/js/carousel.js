@@ -4,14 +4,15 @@ jQuery(document).ready(function() {
     jQuery.each( data.slider, function( key, val ) {
       console.log(val);
 
-      items.push( "<li id='" + key + "'><img src='" + val.src + "' /></li>" );
+      items.push( "<li id='" + key + "'><p>"+ val.id +"</p><img src='" + val.src + "' /></li>" );
     });
 
     jQuery( "<ul/>", {
       "class": "my-new-list",
       html: items.join( "" )
-    }).appendTo( "ul#slide" );
+    }).appendTo( "#slide" );
   });
+
 
   var slideCount = $('#slider ul li').lenght;
   var slideWidth = $('#slider ul li').width();
@@ -26,7 +27,7 @@ jQuery(document).ready(function() {
   function moveLeft() {
     $('#slider ul').animate({
       left: + slideWidth
-    }, 0, function () {
+    }, 100, function () {
       $('#slider ul li:last-child').prependTo('#slider ul');
       $('#slider ul').css('left', '');
     });
@@ -35,7 +36,7 @@ jQuery(document).ready(function() {
   function moveRight() {
     $('#slider ul').animate({
       left: - slideWidth
-    }, 0, function () {
+    }, 100, function () {
       $('#slider ul li:first-child').appendTo('#slider ul');
       $('#slider ul').css('left', '');
     });

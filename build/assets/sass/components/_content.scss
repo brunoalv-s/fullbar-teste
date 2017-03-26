@@ -1,6 +1,10 @@
 .content {
   margin: 15px 0;
 
+  @include breakpoint(max-small) {
+    margin-top: 100px;
+  }
+
   .posts {
     background: $color-white;
     padding: 15px 30px;

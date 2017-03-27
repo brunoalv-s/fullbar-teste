@@ -9,6 +9,7 @@ var gulp = require('gulp'),
     prefix = require('gulp-autoprefixer'),
     sourcemaps = require('gulp-sourcemaps'),
     uglify = require('gulp-uglify'),
+    concat = require('gulp-concat'),
     htmlmin = require('gulp-minify-html'),
     cssmin = require('gulp-clean-css');
 
@@ -49,6 +50,7 @@ gulp.task('sass', function(){
 gulp.task('scripts', function() {
   return gulp.src('build/assets/js/**/*.js')
     .pipe(uglify())
+    .pipe(concat('main.js'))
     .pipe(gulp.dest('app/assets/js'))
 });
 

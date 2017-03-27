@@ -8,41 +8,48 @@ var gulp = require('gulp'),
     pug = require('gulp-pug'),
     prefix = require('gulp-autoprefixer'),
     sourcemaps = require('gulp-sourcemaps'),
-    rename = require('gulp-rename'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    htmlmin = require('gulp-minify-html'),
+    cssmin = require('gulp-clean-css');
 
 gulp.task('browserSync', function() {
   browserSync.init({
     server: {
-      baseDir: 'build/'
+      baseDir: 'app/'
     }
   });
 
   gulp.watch('build/assets/sass/**/*.scss', ['sass']);
-  // gulp.watch('build/assets/js/**/*.js', ['scripts'])
-  gulp.watch('build/**/*.{html,css,js}').on('change', function() {
+  gulp.watch('build/assets/js/**/*.js', ['scripts'])
+  gulp.watch('app/**/*.{html,css,js}').on('change', function() {
     browserSync.reload();
   });
 
 });
 
+gulp.task('htmlmin', function() {
+  return gulp.src('build/**/*.html')
+    .pipe(htmlmin())
+    .pipe(gulp.dest('app'))
+})
+
 gulp.task('sass', function(){
   return gulp.src('build/assets/sass/**/*.{sass,scss}')
     .pipe(sourcemaps.init())
       .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+      .pipe(cssmin())
       .pipe(prefix({
         browsers: ['last 2 versions'],
         cascade: false
       }))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('build/assets/css'))
+    .pipe(gulp.dest('app/assets/css'))
 });
 
 gulp.task('scripts', function() {
   return gulp.src('build/assets/js/**/*.js')
     .pipe(uglify())
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(gulp.dest('build/assets/js'))
+    .pipe(gulp.dest('app/assets/js'))
 });
 
 gulp.task('images', function() {
@@ -50,13 +57,13 @@ gulp.task('images', function() {
     .pipe(cache(imagemin({
       interlaced: true
     })))
-    .pipe(gulp.dest('build/assets/images'))
+    .pipe(gulp.dest('app/assets/images'))
 });
 
 // Apenas move o arquivo Json
 gulp.task('move', function() {
-  return gulp.src('build/assets/js/*.json')
-  .pipe(gulp.dest('app/assets/js'))
+  return gulp.src('build/**/*.json')
+  .pipe(gulp.dest('app'))
 });
 
-gulp.task('default', ['sass', 'scripts', 'images', 'browserSync']);
+gulp.task('default', ['htmlmin','sass', 'move', 'scripts', 'images', 'browserSync']);
